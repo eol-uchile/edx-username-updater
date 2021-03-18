@@ -101,9 +101,9 @@ class Updater:
         ]
         for path in possible_xpro_result_file_paths:
             if storage.exists(path):
-                with storage.open(path) as f:
+                with storage.open(path, 'r') as f:
                     # If the file is found, parse the JSON and return
-                    return json.loads(f.read())
+                    return json.loads(f.read().decode('utf-8'))
         raise ImproperlyConfigured(
             "Could not find an xPro result JSON file at any of these paths: {}\n(env var {}={})".format(
                 str(possible_xpro_result_file_paths),

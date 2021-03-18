@@ -31,7 +31,7 @@ run.xpro.specific :
 	@echo "import $(XPRO_SPECIFIC_USER_UPDATER_SCRIPT)" | python ./manage.py shell
 
 run.edx :
-	@echo "import $(EDX_UPDATER_SCRIPT)" | python ./manage.py lms shell
+	@echo "import $(EDX_UPDATER_SCRIPT)" | python ./manage.py lms shell --settings prod.production
 
 run.edx.forum :
-	@echo "import $(EDX_FORUM_UPDATER_SCRIPT)" | python ./manage.py lms shell
+	@echo "import $(EDX_FORUM_UPDATER_SCRIPT)" | python ./manage.py lms --settings prod.production shell

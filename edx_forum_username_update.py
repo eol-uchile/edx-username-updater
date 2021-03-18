@@ -6,7 +6,7 @@ from django.contrib.auth import get_user_model
 from student.models import CourseEnrollment
 from openedx.core.djangoapps.django_comment_common.comment_client.utils import perform_request as perform_forum_request
 from openedx.core.djangoapps.django_comment_common.comment_client.user import User as CommentUser
-from openedx.core.djangoapps.django_comment_common.comment_clientlms.lib.comment_client.thread import Thread
+from openedx.core.djangoapps.django_comment_common.comment_client.thread import Thread
 from openedx.core.djangoapps.django_comment_common.comment_client.comment import Comment
 
 import username_update_lib as update_lib
@@ -32,7 +32,7 @@ class UpdateFailedException(Exception):
 
 def get_enrolled_course_ids(user):
     return [
-        unicode(enrollment.course_id)
+        str(enrollment.course_id)
         for enrollment in CourseEnrollment.enrollments_for_user(user)
         if enrollment.is_active is True
     ]
